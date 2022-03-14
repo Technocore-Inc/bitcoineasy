@@ -105,17 +105,17 @@ def test():
     """
     print("Test with no compression : ")
     print(" Test 1")
-    hex = encrypt(
+    hex_pk = encrypt(
         0xCBF4B9F70470856BB4F40F80B87EDB90865997FFEE6DF315AB166D713AF433A5, 'TestingOneTwoThree')
     wif = encrypt(
         '5KN7MzqK5wt2TP1fQCYyHBtDrXdJuXbUzm4A9rKAteGu3Qi5CVR', 'TestingOneTwoThree')
     expected = '6PRVWUbkzzsbcVac2qwfssoUJAN1Xhrg6bNk8J7Nzm5H7kxEbn2Nh2ZoGg'
     decrypted = decrypt(expected, 'TestingOneTwoThree')
-    if hex == expected and wif == expected:
+    if hex_pk == expected and wif == expected:
         print("     Encryption OK")
     else:
         print("     Encryption failed")
-        print("     hex : ", hex)
+        print("     hex : ", hex_pk)
         print("     wif : ", wif)
         print("     expected : ", expected)
     if decrypted and int.from_bytes(decrypted, 'big') == 0xCBF4B9F70470856BB4F40F80B87EDB90865997FFEE6DF315AB166D713AF433A5:
@@ -127,17 +127,17 @@ def test():
     print("")
 
     print(" Test 2")
-    hex = encrypt(
+    hex_pk = encrypt(
         0x09C2686880095B1A4C249EE3AC4EEA8A014F11E6F986D0B5025AC1F39AFBD9AE, 'Satoshi')
     wif = encrypt(
         '5HtasZ6ofTHP6HCwTqTkLDuLQisYPah7aUnSKfC7h4hMUVw2gi5', 'Satoshi')
     expected = '6PRNFFkZc2NZ6dJqFfhRoFNMR9Lnyj7dYGrzdgXXVMXcxoKTePPX1dWByq'
     decrypted = decrypt(expected, 'Satoshi')
-    if hex == expected and wif == expected:
+    if hex_pk == expected and wif == expected:
         print("     Encryption OK")
     else:
         print("     Encryption failed")
-        print("     hex : ", hex)
+        print("     hex : ", hex_pk)
         print("     wif : ", wif)
         print("     expected : ", expected)
     if decrypted and int.from_bytes(decrypted, 'big') == 0x09C2686880095B1A4C249EE3AC4EEA8A014F11E6F986D0B5025AC1F39AFBD9AE:
@@ -152,17 +152,17 @@ def test():
     print("Test with compression : ")
     print(" Test 1")
     # Here I don't know why there is no 0x01 for compressed privkey so I added it
-    hex = encrypt(
+    hex_pk = encrypt(
         0xCBF4B9F70470856BB4F40F80B87EDB90865997FFEE6DF315AB166D713AF433A501, 'TestingOneTwoThree')
     wif = encrypt(
         'L44B5gGEpqEDRS9vVPz7QT35jcBG2r3CZwSwQ4fCewXAhAhqGVpP', 'TestingOneTwoThree')
     expected = '6PYNKZ1EAgYgmQfmNVamxyXVWHzK5s6DGhwP4J5o44cvXdoY7sRzhtpUeo'
     decrypted = decrypt(expected, 'TestingOneTwoThree')
-    if hex == expected and wif == expected:
+    if hex_pk == expected and wif == expected:
         print("     Encryption OK")
     else:
         print("     Encryption failed")
-        print("     hex : ", hex)
+        print("     hex : ", hex_pk)
         print("     wif : ", wif)
         print("     expected : ", expected)
     if decrypted and int.from_bytes(decrypted, 'big') == 0xCBF4B9F70470856BB4F40F80B87EDB90865997FFEE6DF315AB166D713AF433A501:
@@ -175,17 +175,17 @@ def test():
 
     print(" Test 2")
     # Here I don't know why there is no 0x01 for compressed privkey so I added it
-    hex = encrypt(
+    hex_pk = encrypt(
         0x09C2686880095B1A4C249EE3AC4EEA8A014F11E6F986D0B5025AC1F39AFBD9AE01, 'Satoshi')
     wif = encrypt(
         'KwYgW8gcxj1JWJXhPSu4Fqwzfhp5Yfi42mdYmMa4XqK7NJxXUSK7', 'Satoshi')
     expected = '6PYLtMnXvfG3oJde97zRyLYFZCYizPU5T3LwgdYJz1fRhh16bU7u6PPmY7'
     decrypted = decrypt(expected, 'Satoshi')
-    if hex == expected and wif == expected:
+    if hex_pk == expected and wif == expected:
         print("     Encryption OK")
     else:
         print("     Encryption failed")
-        print("     hex : ", hex)
+        print("     hex : ", hex_pk)
         print("     wif : ", wif)
         print("     expected : ", expected)
     if decrypted and int.from_bytes(decrypted, 'big') == 0x09C2686880095B1A4C249EE3AC4EEA8A014F11E6F986D0B5025AC1F39AFBD9AE01:
@@ -196,4 +196,5 @@ def test():
 
 
 if __name__ == '__main__':
+
     test()
