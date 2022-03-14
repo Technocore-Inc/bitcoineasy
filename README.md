@@ -36,7 +36,7 @@ To use it from source, you need to install dependencies (see below for more deta
 git clone https://github.com/darosior/bitcoineasy/ && cd bitcoin-easy
 python3 -m venv venv
 . venv/bin/activate
-pip install py_ecc pycrypto scrypt requests
+pip install py_ecc pycryptodome scrypt requests
 ```
   
   
