@@ -36,13 +36,13 @@ To use it from source, you need to install dependencies (see below for more deta
 git clone https://github.com/darosior/bitcoineasy/ && cd bitcoin-easy
 python3 -m venv venv
 . venv/bin/activate
-pip install py_ecc pycryptodome scrypt requests
+pip install py_ecc pycryptodomex scrypt requests
 ```
   
   
 ## Dependencies
 - [py_ecc](https://github.com/ethereum/py_ecc) - For the secp256k1 curve
-- [pycrypto](https://pypi.org/project/pycrypto/) - For AES
+- [pycryptomex](https://pypi.org/project/pycryptodomex/) - For AES MODE_ECB
 - [scrypt](https://pypi.org/project/scrypt/) - For bip38
 - [requests](http://docs.python-requests.org/en/master/) - For entropy
   

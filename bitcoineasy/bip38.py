@@ -1,9 +1,10 @@
 # coding: utf8
+# python 3.7.4
 
 from utils import sizeof, double_sha256, base58check_encode, base58check_decode, wif_decode
 from keys import get_address, get_pubkey
 import scrypt
-from Crypto.Cipher import AES
+from Cryptodome.Cipher import AES
 
 """
 Encryption and decryption of private keys, as described in bip38 : https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki
@@ -47,7 +48,7 @@ def encrypt(key, passphrase):
     derivedhalf1 = passderived[0:32]
     derivedhalf2 = passderived[32:64]
     # We then encrypt with AES as specified in BIP
-    cipher = AES.new(derivedhalf2, AES.MODE_CBC)
+    cipher = AES.new(derivedhalf2, AES.MODE_ECB)
     int1 = int.from_bytes(key[0:16], 'big') ^ int.from_bytes(
         derivedhalf1[0:16], 'big')
     int2 = int.from_bytes(key[16:32], 'big') ^ int.from_bytes(
@@ -77,7 +78,7 @@ def decrypt(key, passphrase):
     passderived = scrypt.hash(passphrase.encode(), addresshash, 16384, 8, 8)
     derivedhalf1 = passderived[0:32]
     derivedhalf2 = passderived[32:64]
-    cipher = AES.new(derivedhalf2, AES.MODE_CBC)
+    cipher = AES.new(derivedhalf2, AES.MODE_ECB)
     decryptedhalf1 = cipher.decrypt(encryptedhalf1)
     decryptedhalf2 = cipher.decrypt(encryptedhalf2)
     # Inverse of XOR is ... XOR
